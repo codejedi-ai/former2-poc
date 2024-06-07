@@ -8,15 +8,14 @@ RUN apt-get update && \
 
 # Environment variables for mount directory and AWS region
 ENV MOUNT_DIR=/data
-ENV AWS_REGION=us-east-1
+# default AWS region us-east-1
+# ENV AWS_REGION=us-east-1
+# ENV aws_access_key_id = XXXX
+# ENV aws_secret_access_key = XXXXXX
 
 # Create the directory to ensure it exists
 RUN mkdir -p ${MOUNT_DIR}
 WORKDIR ${MOUNT_DIR}
-
-# Create .aws directory and copy credentials
-RUN mkdir -p /root/.aws
-COPY .credentials /root/.aws/credentials
 
 # Copy the entrypoint script
 COPY entrypoint.sh /entrypoint.sh
