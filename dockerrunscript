@@ -1,0 +1,2 @@
+docker build -t former3 .
+docker run -d -it --name former-3-run --mount type=bind,source="$(pwd)"/data,target=/data former3
